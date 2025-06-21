@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Warehouse Simulator</title>
+  </head>
+  <body>
+    <main>
+      <h1>Warehouse Simulator</h1>
+      <div id="root">
+        <div class="warehouse-wrapper">
+          <canvas id="warehouse"></canvas>
+        </div>
+        <div id="mobile-controls" class="controls">
+          <button id="left" class="button">&larr;</button>
+          <button id="up" class="button">&uarr;</button>
+          <button id="down" class="button">&darr;</button>
+          <button id="right" class="button">&rarr;</button>
+        </div>
+        <div class="controls">
+          <input id="map" name="map" type="file" accept="text/plain" hidden />
+          <button id="upload" class="button">Upload</button>
+          <button id="reset" class="button" style="background-color: #9f7db1;">Reset</button>
+          <button id="help-btn" class="button" style="background-color: #38667f;">Help</button>
+        </div>
+      </div>
+
+      <dialog id="help-modal" closedby="any">
+        <button class="close">Close</button> 
+        <h2>Welcome to the warehouse simulator based on Advent Of Code 2024 puzzle!</h2>
+        <a href="https://adventofcode.com/2024/day/15">Day 15: Warehouse Woes</a>
+
+        <p>You can control a bulldozer via keyboard (on desktop) or with buttons (mobile) and move boxes and/or containers around</p>
+
+        <h3>Controls (desktop):</h3>
+
+        <ul>
+          <li>Up: press <kbd>&uarr;</kbd>, <kbd>w</kbd> or <kbd>k</kbd> button</li>
+          <li>Left: press <kbd>&larr;</kbd>, <kbd>a</kbd> or <kbd>h</kbd> button</li>
+          <li>Down: press <kbd>&darr;</kbd>, <kbd>s</kbd> or <kbd>j</kbd> button</li>
+          <li>Right: press <kbd>&rarr;</kbd>, <kbd>d</kbd> or <kbd>l</kbd> button</li>
+        </ul>
+
+        <p>You can also <kbd>Upload</kbd> txt file with input from puzzle and play around with that!</p>
+
+        <p>At any point, click <kbd>Reset</kbd> to restore original map that you've uploaded</p>
+      </dialog>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
