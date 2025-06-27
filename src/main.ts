@@ -1,4 +1,4 @@
-import { drawBox, drawBulldozer, drawWall } from "./assets";
+import { drawBox, drawBulldozer, drawContainer, drawWall } from "./assets";
 import { ALL_KEYS, DIRECTIONS, exampleMap, TILE_SIZE } from "./constants";
 import { getPositionHash } from "./position";
 import "./reset.css";
@@ -60,6 +60,8 @@ function render() {
         drawWall(ctx, x, y);
       } else if (warehouse.boxes.has(tilePositionHash)) {
         drawBox(ctx, x, y);
+      } else if (warehouse.containersLeft.has(tilePositionHash)) {
+        drawContainer(ctx, x, y);
       }
     }
   }

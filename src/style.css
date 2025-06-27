@@ -54,15 +54,17 @@ h1 {
 }
 
 .warehouse-wrapper {
+  position: relative;
   width: 100%;
   padding: 16px;
 }
 
 #warehouse {
+  --shadow-color: color-mix(in oklch, var(--border-color) 30%, transparent);
   width: 100%;
   height: 60vh;
   image-rendering: pixelated;
-  box-shadow: 0px 5px var(--border-color), 0px -5px var(--border-color), 5px 0px var(--border-color), -5px 0px var(--border-color), 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff36;
+  box-shadow: 0px 5px var(--border-color), 0px -5px var(--border-color), 5px 0px var(--border-color), -5px 0px var(--border-color), 0px 10px var(--shadow-color), 5px 5px var(--shadow-color), -5px 5px var(--shadow-color);
 }
 
 #mobile-controls {
@@ -80,16 +82,17 @@ h1 {
 }
 
 .button {
+  --shadow-color: color-mix(in oklch, var(--border-color) 30%, transparent);
   color: var(--text-color-dark);
   background-color: #009688;
   padding: 16px 32px;
   font-size: 1.5rem;
-  box-shadow: 0px 5px var(--border-color), 0px -5px var(--border-color), 5px 0px var(--border-color), -5px 0px var(--border-color), 0px 10px #00000038, 5px 5px #00000038, -5px 5px #00000038, inset 0px 5px #ffffff36;
+  box-shadow: 0px 5px var(--border-color), 0px -5px var(--border-color), 5px 0px var(--border-color), -5px 0px var(--border-color), 0px 10px var(--shadow-color), 5px 5px var(--shadow-color), -5px 5px var(--shadow-color), inset 0px 5px #ffffff36;
 }
 
 .button:active {
   transform: translateY(5px);
-  box-shadow: 0px 5px var(--border-color), 0px -5px var(--border-color), 5px 0px var(--border-color), -5px 0px var(--border-color), inset 0px 5px #00000038;
+  box-shadow: 0px 5px var(--border-color), 0px -5px var(--border-color), 5px 0px var(--border-color), -5px 0px var(--border-color), inset 0px 5px var(--shadow-color);
 }
 
 #mobile-controls>.button {
