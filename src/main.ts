@@ -1,6 +1,5 @@
 import "./reset.css";
 import "./style.css";
-import "./PixelifySans-Regular.woff2";
 
 import { drawBox, drawBulldozer, drawContainer, drawWall } from "./assets";
 import { ALL_KEYS, DIRECTIONS, exampleMap, TILE_SIZE } from "./constants";
