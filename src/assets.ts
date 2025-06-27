@@ -51,8 +51,10 @@ export function drawBulldozer(ctx: CanvasRenderingContext2D, x: number, y: numbe
 
 }
 
-await Promise.all([wall, box, container, bulldozer].map(img => {
-  return new Promise((resolve) => {
-    img.onload = resolve;
-  });
-}));
+(async () => {
+  await Promise.all([wall, box, container, bulldozer].map(img => {
+    return new Promise((resolve) => {
+      img.onload = resolve;
+    });
+  }));
+})();

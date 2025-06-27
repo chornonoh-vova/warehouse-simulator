@@ -1,8 +1,10 @@
+import "./reset.css";
+import "./style.css";
+import "./PixelifySans-Regular.woff2";
+
 import { drawBox, drawBulldozer, drawContainer, drawWall } from "./assets";
 import { ALL_KEYS, DIRECTIONS, exampleMap, TILE_SIZE } from "./constants";
 import { getPositionHash } from "./position";
-import "./reset.css";
-import "./style.css";
 import { clamp } from "./utils";
 import { Warehouse } from "./warehouse";
 
