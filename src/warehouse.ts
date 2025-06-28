@@ -104,6 +104,10 @@ export class Warehouse {
 
     if (this.boxes.has(nextBoxPositionHash)) {
       return this.canMoveBox(nextBoxPosition, direction);
+    } else if (this.containersLeft.has(nextBoxPositionHash)) {
+      return this.canMoveContainer(this.containersLeft.get(nextBoxPositionHash)!, direction);
+    } else if (this.containersRight.has(nextBoxPositionHash)) {
+      return this.canMoveContainer(this.containersRight.get(nextBoxPositionHash)!, direction);
     } else {
       return !this.walls.has(nextBoxPositionHash);
     }
@@ -115,6 +119,10 @@ export class Warehouse {
 
     if (this.boxes.has(nextBoxPositionHash)) {
       this.moveBox(nextBoxPosition, direction);
+    } else if (this.containersLeft.has(nextBoxPositionHash)) {
+      this.moveContainer(this.containersLeft.get(nextBoxPositionHash)!, direction);
+    } else if (this.containersRight.has(nextBoxPositionHash)) {
+      this.moveContainer(this.containersRight.get(nextBoxPositionHash)!, direction);
     }
 
     this.boxes.delete(getPositionHash(boxPosition));
@@ -133,12 +141,16 @@ export class Warehouse {
     if (leftHash === nextRightHash) {
       if (this.containersRight.has(nextLeftHash)) {
         return this.canMoveContainer(this.containersRight.get(nextLeftHash)!, direction);
+      } else if (this.boxes.has(nextLeftHash)) {
+        return this.canMoveBox(nextLeft, direction);
       }
 
       return !this.walls.has(nextLeftHash);
     } else if (rightHash === nextLeftHash) {
       if (this.containersLeft.has(nextRightHash)) {
         return this.canMoveContainer(this.containersLeft.get(nextRightHash)!, direction);
+      } else if (this.boxes.has(nextRightHash)) {
+        return this.canMoveBox(nextRight, direction);
       }
 
       return !this.walls.has(nextRightHash);
@@ -149,6 +161,8 @@ export class Warehouse {
 
       if (this.containersLeft.has(nextRightHash)) {
         canMoveRight = this.canMoveContainer(this.containersLeft.get(nextRightHash)!, direction);
+      } else if (this.boxes.has(nextRightHash)) {
+        canMoveRight = this.canMoveBox(nextRight, direction);
       } else {
         canMoveRight = !this.walls.has(nextRightHash);
       }
@@ -157,6 +171,8 @@ export class Warehouse {
 
       if (this.containersRight.has(nextLeftHash)) {
         canMoveLeft = this.canMoveContainer(this.containersRight.get(nextLeftHash)!, direction);
+      } else if (this.boxes.has(nextLeftHash)) {
+        canMoveLeft = this.canMoveBox(nextLeft, direction);
       } else {
         canMoveLeft = !this.walls.has(nextLeftHash);
       }
@@ -177,20 +193,28 @@ export class Warehouse {
     if (leftHash === nextRightHash) {
       if (this.containersRight.has(nextLeftHash)) {
         this.moveContainer(this.containersRight.get(nextLeftHash)!, direction);
+      } else if (this.boxes.has(nextLeftHash)) {
+        this.moveBox(nextLeft, direction);
       }
     } else if (rightHash === nextLeftHash) {
       if (this.containersLeft.has(nextRightHash)) {
         this.moveContainer(this.containersLeft.get(nextRightHash)!, direction);
+      } else if (this.boxes.has(nextRightHash)) {
+        this.moveBox(nextRight, direction);
       }
     } else if (this.containersLeft.has(nextLeftHash)) {
       this.moveContainer(this.containersLeft.get(nextLeftHash)!, direction);
     } else {
       if (this.containersLeft.has(nextRightHash)) {
         this.moveContainer(this.containersLeft.get(nextRightHash)!, direction);
+      } else if (this.boxes.has(nextRightHash)) {
+        this.moveBox(nextRight, direction);
       }
 
       if (this.containersRight.has(nextLeftHash)) {
         this.moveContainer(this.containersRight.get(nextLeftHash)!, direction);
+      } else if (this.boxes.has(nextLeftHash)) {
+        this.moveBox(nextLeft, direction);
       }
     }
 
